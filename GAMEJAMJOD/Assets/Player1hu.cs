@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Player2Controller : MonoBehaviour
+public class Player1hu : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public float jumpForce = 5f;
@@ -37,18 +37,18 @@ public class Player2Controller : MonoBehaviour
         // Horizontal movement (A/D or Arrow keys)
         moveInput.x = 0;
 
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.A))
         {
             moveInput.x = -1; // Move left
         }
-        else if (Input.GetKey(KeyCode.RightArrow))
+        else if (Input.GetKey(KeyCode.D))
         {
             moveInput.x = 1; // Move right
         }
 
         // Jump (W or Up Arrow)
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
+        if (Input.GetKeyDown(KeyCode.W))
+        { 
             Jump();
         }
     }
