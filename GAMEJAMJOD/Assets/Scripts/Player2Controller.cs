@@ -21,8 +21,8 @@ public class Player2Controller : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
-        wallHopDirection.Normalize();
-        wallJumpDirection.Normalize();
+        //wallHopDirection.Normalize();
+        //wallJumpDirection.Normalize();
     }
 
     private void Update()
