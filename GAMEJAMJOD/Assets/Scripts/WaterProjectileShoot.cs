@@ -12,14 +12,20 @@ public class WaterProjectileShoot : MonoBehaviour
     public float projectileSpeed = 10f;
 
     //for flip logic
-    private bool isFacingRight = true; 
+    private bool isFacingRight = true;
+    //playercontroller2 reference
+    public Player2Controller pc2;
 
     void Update()
     {
         // Check for shoot input (e.g., "Fire1" is often left mouse button or Ctrl key)
-        if (Input.GetKeyDown(KeyCode.RightShift))
+        if (Input.GetKeyDown(KeyCode.RightShift)&& pc2.isGrounded==true)
         {
-            Shoot();
+            Shoot(false);
+        }
+        if(pc2.isGrounded==false && Input.GetKeyDown(KeyCode.RightShift))
+        {
+            Shoot(true);
         }
 
         // Flip logic
@@ -33,24 +39,45 @@ public class WaterProjectileShoot : MonoBehaviour
         }
     }
 
-    private void Shoot()
+    private void Shoot(bool shootupward)
     {
         
         GameObject projectile = Instantiate(projectilePrefab, shootPoint.position, Quaternion.identity);
         Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
-        if (isFacingRight)
+
+        if(shootupward==true)
         {
-            rb.velocity = new Vector2(projectileSpeed, 0);
+            //Debug.Log("Grounded ==false & projectile upward");
+            rb.velocity = new Vector2(0, projectileSpeed);
         }
+
+
         else
         {
-            rb.velocity = new Vector2(-projectileSpeed, 0);
+            if (isFacingRight)
+            {
+                rb.velocity = new Vector2(projectileSpeed, 0);
+            }
 
-            //flipping the projectile when player is facing left
-            Vector3 projectileScale = projectile.transform.localScale;
-            projectileScale.x = -Mathf.Abs(projectileScale.x);
-            projectile.transform.localScale = projectileScale;
+           
+          
+
+            else
+            {
+                rb.velocity = new Vector2(-projectileSpeed, 0);
+
+                //flipping the projectile when player is facing left
+                Vector3 projectileScale = projectile.transform.localScale;
+                projectileScale.x = -Mathf.Abs(projectileScale.x);
+                projectile.transform.localScale = projectileScale;
+            }
+
         }
+        
+        
+
+        
+        
     }
 
     private void Flip(bool facingRight)
