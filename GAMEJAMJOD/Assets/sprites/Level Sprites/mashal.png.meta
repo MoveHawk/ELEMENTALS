@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -69,10 +69,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 16384
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -121,7 +121,238 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: mashal_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1000
+        width: 428.57144
+        height: 1000
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dec7b9ef8071a794ba942f68b9c541cc
+      internalID: 2104866549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mashal_1
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 1000
+        width: 428.57144
+        height: 1000
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc66ca7b7e57b3f49afeff96dc24bbaa
+      internalID: -1546557805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mashal_2
+      rect:
+        serializedVersion: 2
+        x: 856
+        y: 1000
+        width: 428.57144
+        height: 1000
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 194b87519e908074f9b0224c7513b47a
+      internalID: 1248597032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mashal_3
+      rect:
+        serializedVersion: 2
+        x: 1284
+        y: 1000
+        width: 428.57144
+        height: 1000
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b68e9b4a690b7ea46b275d05c522b2f3
+      internalID: -1787934421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mashal_4
+      rect:
+        serializedVersion: 2
+        x: 1712
+        y: 1000
+        width: 428.57144
+        height: 1000
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 247c380106aac69478925b1ddfe0b67e
+      internalID: 1094544524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mashal_5
+      rect:
+        serializedVersion: 2
+        x: 2140
+        y: 1000
+        width: 428.57144
+        height: 1000
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df2aa8655a91c4e4baedcfa75933fd45
+      internalID: -1013715666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mashal_6
+      rect:
+        serializedVersion: 2
+        x: 2568
+        y: 1000
+        width: 428.57144
+        height: 1000
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c297ccaf6e632d438b2ad00a2e3f78c
+      internalID: 1708281105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mashal_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 428.57144
+        height: 1000
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82fa07b7bc7064f4e9fdac071d6a5805
+      internalID: -2005413900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mashal_8
+      rect:
+        serializedVersion: 2
+        x: 856
+        y: 0
+        width: 428.57144
+        height: 1000
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1416b17b1ca1ac64284443b26c6d44e1
+      internalID: -465446592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mashal_9
+      rect:
+        serializedVersion: 2
+        x: 1712
+        y: 0
+        width: 428.57144
+        height: 1000
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b60be52c81127344930c82aa0083234
+      internalID: -653497192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mashal_10
+      rect:
+        serializedVersion: 2
+        x: 2568
+        y: 0
+        width: 428.57144
+        height: 1000
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bebd4f36f0047647adef248a81dbc32
+      internalID: -1460831581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +363,18 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      mashal_0: 2104866549
+      mashal_1: -1546557805
+      mashal_10: -1460831581
+      mashal_2: 1248597032
+      mashal_3: -1787934421
+      mashal_4: 1094544524
+      mashal_5: -1013715666
+      mashal_6: 1708281105
+      mashal_7: -2005413900
+      mashal_8: -465446592
+      mashal_9: -653497192
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
