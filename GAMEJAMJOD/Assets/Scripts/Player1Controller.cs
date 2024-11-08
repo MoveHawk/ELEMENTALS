@@ -12,7 +12,7 @@ public class Player1Controller : MonoBehaviour
 
     private Rigidbody2D rb;
     private Vector2 moveInput;
-    public bool isGrounded;
+    private bool isGrounded;
     private bool isWalled;
     private bool isWallSliding;
     private bool canJump;

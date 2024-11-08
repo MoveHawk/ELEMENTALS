@@ -46,9 +46,9 @@ public class FallingPlatform : MonoBehaviour
     IEnumerator Crumble()
     {
         //play anim of crumble
-        yield return new WaitForSeconds(0.5f);//2.0f =anim time
+        yield return new WaitForSeconds(2.0f);//2.0f =anim time
         component(false);
-        yield return new WaitForSeconds(1.5f);// 3.0 f respawn time
+        yield return new WaitForSeconds(1.0f);// 3.0 f respawn time
         //play anim of respawn
         component(true);
         Reset();
