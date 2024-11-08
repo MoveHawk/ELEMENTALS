@@ -10,6 +10,13 @@ public class Player1hu : MonoBehaviour
     public Vector2 wallHopDirection = new Vector2(1, 1);
     public Vector2 wallJumpDirection = new Vector2(1, 1);
 
+    // Variable jump
+    public float variableJumpMultiplier = 0.5f;
+
+    // Coyote time
+    public float coyoteTime = 0.2f;
+    private float coyoteTimeCounter;
+
     private Rigidbody2D rb;
     private Vector2 moveInput;
     private bool isGrounded;
@@ -21,8 +28,8 @@ public class Player1hu : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
-        //wallHopDirection.Normalize();
-        //wallJumpDirection.Normalize();
+        wallHopDirection.Normalize();
+        wallJumpDirection.Normalize();
     }
 
     private void Update()
@@ -30,6 +37,7 @@ public class Player1hu : MonoBehaviour
         HandleInput();
         Move();
         CheckWallSliding();
+        CheckCoyoteTime();
     }
 
     private void HandleInput()
@@ -48,8 +56,12 @@ public class Player1hu : MonoBehaviour
 
         // Jump (W or Up Arrow)
         if (Input.GetKeyDown(KeyCode.W))
-        { 
+        {
             Jump();
+        }
+        if (Input.GetKeyUp(KeyCode.W) && rb.velocity.y > 0)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * variableJumpMultiplier); // Apply variable jump when releasing
         }
     }
 
@@ -63,9 +75,10 @@ public class Player1hu : MonoBehaviour
 
     private void Jump()
     {
-        if (isGrounded)
+        if (isGrounded || coyoteTimeCounter > 0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            coyoteTimeCounter = 0f; // Reset coyote time after jumping
         }
         else if (isWallSliding || isWalled)
         {
@@ -107,6 +120,19 @@ public class Player1hu : MonoBehaviour
         else
         {
             isWallSliding = false;
+        }
+    }
+
+    private void CheckCoyoteTime()
+    {
+        // Update coyote time counter
+        if (isGrounded)
+        {
+            coyoteTimeCounter = coyoteTime; // Reset coyote time when grounded
+        }
+        else
+        {
+            coyoteTimeCounter -= Time.deltaTime; // Count down when not grounded
         }
     }
 }
