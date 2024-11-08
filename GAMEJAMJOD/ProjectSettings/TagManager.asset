@@ -16,7 +16,11 @@ TagManager:
   - UI
   - explosion layer
   - Player1
+<<<<<<< Updated upstream
   - Player2
+=======
+  - 
+>>>>>>> Stashed changes
   - 
   - 
   - 
@@ -43,16 +47,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Backgrounds
-    uniqueID: 1121211711
-    locked: 0
-  - name: Platforms
-    uniqueID: 2610580937
-    locked: 0
-  - name: Collects
-    uniqueID: 782619807
-    locked: 0
-  - name: Player
-    uniqueID: 2391943765
     locked: 0
