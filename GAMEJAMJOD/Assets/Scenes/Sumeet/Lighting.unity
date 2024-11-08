@@ -1338,6 +1338,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -1691555737, guid: 38e077e6b0664cb48b279a1d015c5dfe, type: 3}
+    - target: {fileID: 2348823223928208880, guid: c3e6e21ec61211246b224b86746502ee, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4037272923145003236, guid: c3e6e21ec61211246b224b86746502ee, type: 3}
       propertyPath: m_Name
       value: Water
@@ -21752,6 +21756,10 @@ PrefabInstance:
     - target: {fileID: 2653208792538057122, guid: c557bf5473d8cee4ba6a20e126f49ea5, type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2653208792538057122, guid: c557bf5473d8cee4ba6a20e126f49ea5, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3772295000723887774, guid: c557bf5473d8cee4ba6a20e126f49ea5, type: 3}
       propertyPath: m_Layer
