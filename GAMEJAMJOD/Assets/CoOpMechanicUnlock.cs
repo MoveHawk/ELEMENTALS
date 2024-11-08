@@ -4,7 +4,7 @@ using System.Collections;
 public class CoOpMechanicUnlock : MonoBehaviour
 {
     public float holdDuration = 3f;      // Time in seconds both players need to hold "E" to unlock the mechanic
-    public float mechanicDuration = 60f; // Duration in seconds that the mechanic remains unlocked
+    public float mechanicDuration = 10f; // Duration in seconds that the mechanic remains unlocked
 
     public bool isMechanicActive = false;
     private bool isBothHolding = false;
@@ -14,7 +14,7 @@ public class CoOpMechanicUnlock : MonoBehaviour
     void Update()
     {
         // Check if both players are holding down the "E" key
-        if (Input.GetKey(KeyCode.E) && Input.GetKey(KeyCode.E))
+        if (Input.GetKey(KeyCode.E))
         {
             isBothHolding = true;
             holdTimer += Time.deltaTime;
