@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Player1hu : MonoBehaviour
 {
+
+    public float verticalSpeed = 10f;
     public float moveSpeed = 5f;
     public float jumpForce = 5f;
     public float wallSlideSpeed = 2f;
@@ -10,6 +12,7 @@ public class Player1hu : MonoBehaviour
     public Vector2 wallHopDirection = new Vector2(1, 1);
     public Vector2 wallJumpDirection = new Vector2(1, 1);
 
+    private bool steamActive;
     // Variable jump
     public float variableJumpMultiplier = 0.5f;
 
@@ -24,12 +27,14 @@ public class Player1hu : MonoBehaviour
     private bool isWallSliding;
     private bool canJump;
 
+    public Animator animb;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-
-        wallHopDirection.Normalize();
-        wallJumpDirection.Normalize();
+        steamActive = GetComponent<CoOpMechanicUnlock>().isMechanicActive;
+        //wallHopDirection.Normalize();
+        //wallJumpDirection.Normalize();
     }
 
     private void Update()
@@ -38,6 +43,17 @@ public class Player1hu : MonoBehaviour
         Move();
         CheckWallSliding();
         CheckCoyoteTime();
+
+        if( GetComponent<CoOpMechanicUnlock>().isMechanicActive)
+        {
+           
+            if (Input.GetKey(KeyCode.W))
+            {
+                rb.velocity = new Vector2(rb.velocity.x, verticalSpeed);
+            }
+        }
+
+
     }
 
     private void HandleInput()
@@ -55,11 +71,12 @@ public class Player1hu : MonoBehaviour
         }
 
         // Jump (W or Up Arrow)
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W) && !steamActive)
         {
+           
             Jump();
         }
-        if (Input.GetKeyUp(KeyCode.W) && rb.velocity.y > 0)
+        if (Input.GetKeyUp(KeyCode.W) && rb.velocity.y > 0 && !steamActive)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * variableJumpMultiplier); // Apply variable jump when releasing
         }
@@ -77,6 +94,8 @@ public class Player1hu : MonoBehaviour
     {
         if (isGrounded || coyoteTimeCounter > 0f)
         {
+          
+            
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             coyoteTimeCounter = 0f; // Reset coyote time after jumping
         }
@@ -85,6 +104,8 @@ public class Player1hu : MonoBehaviour
             isWallSliding = false;
             WallJump();
         }
+      
+      
     }
 
     private void WallJump()

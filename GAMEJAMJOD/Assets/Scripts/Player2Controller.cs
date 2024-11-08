@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Player2Controller : MonoBehaviour
 {
+    public float verticalSpeed = 10f;
     public float moveSpeed = 5f;
     public float jumpForce = 5f;
     public float wallSlideSpeed = 2f;
@@ -10,57 +11,79 @@ public class Player2Controller : MonoBehaviour
     public Vector2 wallHopDirection = new Vector2(1, 1);
     public Vector2 wallJumpDirection = new Vector2(1, 1);
 
-    // Variable jump
+    public GameObject coOpMechanicObject; // Reference to the GameObject containing CoOpMechanicUnlock
+    private bool steamActiveforblue;
     public float variableJumpMultiplier = 0.5f;
-
-    // Coyote time
     public float coyoteTime = 0.2f;
-    private float coyoteTimeCounter;
 
+    private float coyoteTimeCounter;
     private Rigidbody2D rb;
     private Vector2 moveInput;
     public bool isGrounded;
     private bool isWalled;
     private bool isWallSliding;
-    private bool canJump;
+
+    private CoOpMechanicUnlock coOpMechanicUnlock;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        //wallHopDirection.Normalize();
-        //wallJumpDirection.Normalize();
+
+        // Obtain reference to CoOpMechanicUnlock from the other GameObject
+        if (coOpMechanicObject != null)
+        {
+            coOpMechanicUnlock = coOpMechanicObject.GetComponent<CoOpMechanicUnlock>();
+        }
+
+        if (coOpMechanicUnlock == null)
+        {
+            Debug.LogError("CoOpMechanicUnlock component not found on the specified GameObject.");
+        }
     }
 
     private void Update()
     {
+        // Dynamically update steamActiveforblue based on the mechanic state
+        if (coOpMechanicUnlock != null)
+        {
+            steamActiveforblue = coOpMechanicUnlock.isMechanicActive;
+        }
+
         HandleInput();
         Move();
         CheckWallSliding();
         CheckCoyoteTime();
+
+        if (steamActiveforblue)
+        {
+            Debug.Log("CAN FLY");
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                rb.velocity = new Vector2(rb.velocity.x, verticalSpeed);
+            }
+        }
     }
 
     private void HandleInput()
     {
-        // Horizontal movement (Left/Right Arrow keys)
         moveInput.x = 0;
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            moveInput.x = -1; // Move left
+            moveInput.x = -1;
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
-            moveInput.x = 1; // Move right
+            moveInput.x = 1;
         }
 
-        // Jump (Up Arrow)
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow) && !steamActiveforblue)
         {
             Jump();
         }
-        if (Input.GetKeyUp(KeyCode.UpArrow) && rb.velocity.y > 0)
+        if (Input.GetKeyUp(KeyCode.UpArrow) && rb.velocity.y > 0 && !steamActiveforblue)
         {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * variableJumpMultiplier); // Apply variable jump when releasing
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * variableJumpMultiplier);
         }
     }
 
@@ -77,7 +100,7 @@ public class Player2Controller : MonoBehaviour
         if (isGrounded || coyoteTimeCounter > 0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            coyoteTimeCounter = 0f; // Reset coyote time after jumping
+            coyoteTimeCounter = 0f;
         }
         else if (isWallSliding || isWalled)
         {
@@ -88,13 +111,13 @@ public class Player2Controller : MonoBehaviour
 
     private void WallJump()
     {
-        float jumpDirection = rb.velocity.x < 0 ? 1 : -1; // Automatically flip direction
-        if (moveInput.x == 0)  // Wall hop
+        float jumpDirection = rb.velocity.x < 0 ? 1 : -1;
+        if (moveInput.x == 0)
         {
             Vector2 wallHop = new Vector2(wallHopForce * wallHopDirection.x * jumpDirection, wallHopForce * wallHopDirection.y);
             rb.velocity = wallHop;
         }
-        else  // Wall jump
+        else
         {
             Vector2 wallJump = new Vector2(wallJumpForce * wallJumpDirection.x * jumpDirection, wallJumpForce * wallJumpDirection.y);
             rb.velocity = wallJump;
@@ -103,14 +126,10 @@ public class Player2Controller : MonoBehaviour
 
     private void CheckWallSliding()
     {
-        // Check if player is grounded
         isGrounded = Physics2D.Raycast(transform.position, Vector2.down, 1.1f, LayerMask.GetMask("Ground"));
-
-        // Check if player is touching a wall on either side (left or right)
         isWalled = Physics2D.Raycast(transform.position, Vector2.right, 0.6f, LayerMask.GetMask("Ground")) ||
                    Physics2D.Raycast(transform.position, Vector2.left, 0.6f, LayerMask.GetMask("Ground"));
 
-        // If player is touching a wall and falling, start wall sliding
         if (isWalled && !isGrounded && rb.velocity.y < 0)
         {
             isWallSliding = true;
@@ -124,14 +143,13 @@ public class Player2Controller : MonoBehaviour
 
     private void CheckCoyoteTime()
     {
-        // Update coyote time counter
         if (isGrounded)
         {
-            coyoteTimeCounter = coyoteTime; // Reset coyote time when grounded
+            coyoteTimeCounter = coyoteTime;
         }
         else
         {
-            coyoteTimeCounter -= Time.deltaTime; // Count down when not grounded
+            coyoteTimeCounter -= Time.deltaTime;
         }
     }
 }
