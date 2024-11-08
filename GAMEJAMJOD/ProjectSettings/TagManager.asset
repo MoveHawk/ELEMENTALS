@@ -3,24 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Player1
-  - Player2
-  - Enemy
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Ground
+  - 
   - Water
   - UI
-  - explosion layer
-  - Player1
-<<<<<<< Updated upstream
-  - Player2
-=======
   - 
->>>>>>> Stashed changes
+  - 
+  - 
   - 
   - 
   - 
