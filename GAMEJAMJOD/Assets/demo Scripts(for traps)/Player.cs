@@ -10,7 +10,10 @@ public class Player : MonoBehaviour
     public bool Grounded;
     public float jumpforce = 5.0f;
     public LayerMask JumpableGround;
-  
+    void Start()
+    {
+        
+    }
 
     // Update is called once per frame
     void Update()
