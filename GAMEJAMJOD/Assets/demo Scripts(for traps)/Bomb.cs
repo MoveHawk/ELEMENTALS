@@ -20,7 +20,7 @@ public class Bomb : MonoBehaviour
 
     private void Update()
     {
-        // Start the explosion countdown
+     
         float distancetoPlayer1 = Vector2.Distance(Player1.transform.position, transform.position);
        // float distancetoPlayer2 = Vector2.Distance(Player2.transform.position, transform.position);
         if (distancetoPlayer1 < playerTriggerDistance)
@@ -37,7 +37,7 @@ public class Bomb : MonoBehaviour
     private void Explode()
     {
         Debug.Log("Explode");
-        Destroy(Player1.gameObject);
+       
         if (hasExploded) return; // Prevent multiple explosions
 
         hasExploded = true;
@@ -60,11 +60,21 @@ public class Bomb : MonoBehaviour
                 Vector2 explosionDirection = rb.position - (Vector2)transform.position;
                 rb.AddForce(explosionDirection.normalized * explosionForce);
 
+                if (nearbyObject.transform == Player1)
+                {
+                    Destroy(Player1.gameObject,1.0f);
+                }
+
+                //else if (nearbyObject.transform == Player2)
+                //{
+                //    Destroy(Player2.gameObject, 1.0f);
+                //}
             }
         }
 
         // Destroy the bomb object after the explosion
         Destroy(gameObject);
+       
     }
 
     private void OnDrawGizmosSelected()
