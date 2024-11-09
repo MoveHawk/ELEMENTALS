@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    public Player1hu pl1;
-    public Player2Controller pc2;
+    public PlayerController pl1;
+    public Player2 pc2;
   
 
 

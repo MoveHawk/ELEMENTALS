@@ -12,13 +12,19 @@ public class Player2 : MonoBehaviour
     private float verticalVelocityTimeLeft;
     private float cooldownTimeLeft;
 
-   public ParticleSystem dust;
-
+    public ParticleSystem dust;
     public bool hasCollectedDiamond = false;
+
+    // Animator reference
+    private Animator animator;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         verticalVelocityTimeLeft = verticalVelocityDuration;
+
+        // Get the Animator component
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -29,7 +35,7 @@ public class Player2 : MonoBehaviour
 
     private void HandleMovement()
     {
-        // Horizontal movement with A and D keys
+        // Horizontal movement with LeftArrow and RightArrow keys
         float move = 0;
         if (Input.GetKey(KeyCode.LeftArrow))
         {
@@ -43,13 +49,19 @@ public class Player2 : MonoBehaviour
         }
 
         // Only add vertical velocity if both Space and LeftShift are held and cooldown is not active
-        if (Input.GetKey(KeyCode.Space) && Input.GetKey(KeyCode.E) && canUseVerticalVelocity)
+        if (Input.GetKey(KeyCode.UpArrow) && Input.GetKey(KeyCode.E) && canUseVerticalVelocity)
         {
             // Start upward velocity when conditions are met
             rb.velocity = new Vector2(move, verticalSpeed);
 
             // Reduce vertical velocity time
             verticalVelocityTimeLeft -= Time.deltaTime;
+
+            // Play flying animation
+            if (animator != null)
+            {
+                animator.SetTrigger("takeof");  // Play flying animation
+            }
 
             if (verticalVelocityTimeLeft <= 0)
             {
@@ -61,6 +73,12 @@ public class Player2 : MonoBehaviour
         {
             // Default to horizontal movement only if vertical velocity is not active
             rb.velocity = new Vector2(move, rb.velocity.y);
+
+            // Stop flying animation when vertical velocity is not active
+            if (animator != null && !canUseVerticalVelocity)
+            {
+                animator.SetBool("IsFlying", false);  // Stop flying animation
+            }
         }
     }
 
@@ -87,5 +105,12 @@ public class Player2 : MonoBehaviour
             // Notify LevelManager that Player 2 has collected their diamond
             LevelManager.Instance.OnPlayerCollectedDiamond(2);
         }
+    }
+    public void Player2Death()
+    {
+        //destroy gameObject
+        // Debug.Log("Destroy player2");
+        Destroy(this.gameObject, 0.5f);
+
     }
 }

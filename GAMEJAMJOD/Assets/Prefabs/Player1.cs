@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private float cooldownTimeLeft;
 
     public bool hasCollectedDiamond = false;
+    public Animator animator;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -39,7 +40,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // Only add vertical velocity if both Space and LeftShift are held and cooldown is not active
-        if (Input.GetKey(KeyCode.Space) && Input.GetKey(KeyCode.RightControl) && canUseVerticalVelocity)
+        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.RightShift) && canUseVerticalVelocity)
         {
             // Start upward velocity when conditions are met
             rb.velocity = new Vector2(move, verticalSpeed);
@@ -52,6 +53,11 @@ public class PlayerController : MonoBehaviour
                 canUseVerticalVelocity = false;
                 cooldownTimeLeft = cooldownDuration;
             }
+            if (animator != null)
+            {
+                animator.SetTrigger("takeof");  // Play flying animation
+            }
+
         }
         else
         {
@@ -82,5 +88,12 @@ public class PlayerController : MonoBehaviour
             // Notify LevelManager that Player 1 has collected their diamond
             LevelManager.Instance.OnPlayerCollectedDiamond(1);
         }
+    }
+    public void Player1Death()
+    {
+        //destroy gameObject
+        Debug.Log("Destroy player1");
+        Destroy(this.gameObject, 0.5f);
+
     }
 }

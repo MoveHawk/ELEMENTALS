@@ -15,7 +15,7 @@ public class firecheckpoint : MonoBehaviour
         {
             //update pos of fire
             Debug.Log("updated Fire checkpoint");
-            gc.UpdatePlayer1Checkpoint(transform.position);
+          
             //Debug.Log("Check kr gamecontroller attach hai kya?");
         }
     }
@@ -23,4 +23,4 @@ public class firecheckpoint : MonoBehaviour
 
     
 
-}
+
