@@ -376,6 +376,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 335232693}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &116898591 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7488132622287441042, guid: 5e0d759444c12ee42adece26e16d4dfe, type: 3}
+  m_PrefabInstance: {fileID: 5303219699201644647}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &116898592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116898591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7424b69e9ad5b354c905f571cd3f54b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gc: {fileID: 1515744483}
 --- !u!1 &236702177
 GameObject:
   m_ObjectHideFlags: 0
@@ -22740,6 +22758,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 335232693}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1944299841 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7884457520426959819, guid: 2277b9cfb21d0b64f9c45077c2e62a7e, type: 3}
+  m_PrefabInstance: {fileID: 7120478967828872807}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1944299842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1944299841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 483400945e35d2848bbcabadd271e2c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gc: {fileID: 513047905}
 --- !u!1 &2016402315
 GameObject:
   m_ObjectHideFlags: 0
@@ -23021,10 +23057,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: firecheckpoint
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6850193650739839778, guid: 5e0d759444c12ee42adece26e16d4dfe, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7488132622287441042, guid: 5e0d759444c12ee42adece26e16d4dfe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 116898592}
   m_SourcePrefab: {fileID: 100100000, guid: 5e0d759444c12ee42adece26e16d4dfe, type: 3}
 --- !u!1001 &6198983144573446240
 PrefabInstance:
@@ -23236,10 +23276,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: watercheckpoint
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6924344305886186367, guid: 2277b9cfb21d0b64f9c45077c2e62a7e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7884457520426959819, guid: 2277b9cfb21d0b64f9c45077c2e62a7e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1944299842}
   m_SourcePrefab: {fileID: 100100000, guid: 2277b9cfb21d0b64f9c45077c2e62a7e, type: 3}
 --- !u!1001 &7841827933216478603
 PrefabInstance:

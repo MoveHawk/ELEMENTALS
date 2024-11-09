@@ -14,7 +14,7 @@ public class WaterCheckpoint : MonoBehaviour
         {
             //update pos of fire
             Debug.Log("updated water checkpoint");
-            // gc.UpdatePlayer2Checkpoint(transform.position);
+            gc.UpdatePlayer2Checkpoint(transform.position);
             //Debug.Log("Check kr gamecontroller attach hai kya?");
         }
     }
