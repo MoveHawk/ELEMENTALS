@@ -4,16 +4,18 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Player1
+  - Player2
   - MovingPlatform
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Explosion
+  - Ground
   - Water
   - UI
-  - 
-  - 
+  - Player1
+  - Player2
   - 
   - 
   - 
@@ -39,6 +41,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 1442334965
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Platform
+    uniqueID: 1280380165
+    locked: 0
+  - name: Player
+    uniqueID: 842543325
     locked: 0

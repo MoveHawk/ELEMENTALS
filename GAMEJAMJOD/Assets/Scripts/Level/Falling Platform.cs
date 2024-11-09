@@ -11,22 +11,18 @@ public class FallingPlatform : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
 
     private void OnCollisionEnter2D(Collision2D collision)
+{
+    if (falling)
+        return;
+
+    // Check if the player is above the platform
+    if ((collision.transform.CompareTag("Player1") || collision.transform.CompareTag("Player2")) && 
+        collision.contacts[0].normal.y < -0.5f)
     {
-        // Avoid calling the coroutine multiple times if it's already been called (falling)
-        if (falling)
-            return;
-
-        // If the player landed on the platform, start falling
-        if (collision.transform.tag == "Player1")
-        {
-            StartCoroutine(StartFall());
-        }
-
-        if (collision.transform.tag == "Player2")
-        {
-            StartCoroutine(StartFall());
-        }
+        StartCoroutine(StartFall());
     }
+}
+
 
     private IEnumerator StartFall()
     {
