@@ -28,6 +28,7 @@ public class Player1hu : MonoBehaviour
     private bool canJump;
 
     public Animator animb;
+    public GameController gc;
 
     private void Awake()
     {
@@ -162,5 +163,8 @@ public class Player1hu : MonoBehaviour
         //destroy gameObject
         Debug.Log("Destroy player1");
         Destroy(this.gameObject,2.0f);
+        //Respawn to checkpoint
+        gc.Player1Respawnneed();
+        //Debug.Log("Check kr gamecontroller attach hai kya?");
     }
 }

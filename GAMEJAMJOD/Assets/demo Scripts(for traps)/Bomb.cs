@@ -19,6 +19,9 @@ public class Bomb : MonoBehaviour
     public Transform Player1;
     //public Transform Player2;
 
+    public Player1hu pl1;
+    public Player2Controller pc2;
+
     private void Update()
     {
      
@@ -37,7 +40,7 @@ public class Bomb : MonoBehaviour
 
     private void Explode()
     {
-        Debug.Log("Explode");
+        //Debug.Log("Explode");
        
         if (hasExploded) return; // Prevent multiple explosions
 
@@ -63,14 +66,16 @@ public class Bomb : MonoBehaviour
 
                 if (nearbyObject.transform == Player1)
                 {
-                    
+
                     //Call Player Death
-                    Destroy(Player1.gameObject,1.0f);
+                    pl1.Player1Death();
+                    
                 }
 
                 //else if (nearbyObject.transform == Player2)
                 //{
-                //    Destroy(Player2.gameObject, 1.0f);
+                
+                      //pc2.Player2Death();
                 //}
             }
         }
