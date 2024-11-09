@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class Player2 : MonoBehaviour
 {
     public float horizontalSpeed = 5f;
@@ -11,6 +11,7 @@ public class Player2 : MonoBehaviour
     private bool canUseVerticalVelocity = true;
     private float verticalVelocityTimeLeft;
     private float cooldownTimeLeft;
+    private bool isFacingRight = true;
 
     public ParticleSystem dust;
     public bool hasCollectedDiamond = false;
@@ -40,15 +41,17 @@ public class Player2 : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             move = -horizontalSpeed;
+            Flip(false); // Flip to face left
             //dust.Play();
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
             move = horizontalSpeed;
+            Flip(true); // Flip to face right
             //dust.Play();
         }
 
-        // Only add vertical velocity if both Space and LeftShift are held and cooldown is not active
+        // Only add vertical velocity if both UpArrow and E are held and cooldown is not active
         if (Input.GetKey(KeyCode.UpArrow) && Input.GetKey(KeyCode.E) && canUseVerticalVelocity)
         {
             // Start upward velocity when conditions are met
@@ -96,6 +99,18 @@ public class Player2 : MonoBehaviour
         }
     }
 
+    private void Flip(bool facingRight)
+    {
+        // Flip the player's local scale based on direction
+        if (facingRight != isFacingRight)
+        {
+            isFacingRight = facingRight;
+            Vector3 scale = transform.localScale;
+            scale.x *= -1;
+            transform.localScale = scale;
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Diamond"))
@@ -106,11 +121,10 @@ public class Player2 : MonoBehaviour
             LevelManager.Instance.OnPlayerCollectedDiamond(2);
         }
     }
+
     public void Player2Death()
     {
         //destroy gameObject
-        // Debug.Log("Destroy player2");
-        Destroy(this.gameObject, 0.5f);
-
+        SceneManager.LoadScene(3);
     }
 }

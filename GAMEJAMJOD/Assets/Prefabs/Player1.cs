@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private bool canUseVerticalVelocity = true;
     private float verticalVelocityTimeLeft;
     private float cooldownTimeLeft;
+    private bool isFacingRight = true;
 
     public bool hasCollectedDiamond = false;
     public Animator animator;
@@ -33,16 +35,18 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             move = -horizontalSpeed;
+            Flip(false); // Face left
         }
         else if (Input.GetKey(KeyCode.D))
         {
             move = horizontalSpeed;
+            Flip(true); // Face right
         }
 
+        // Vertical movement if W and RightShift are held, and cooldown is not active
         if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.RightShift) && canUseVerticalVelocity)
         {
             rb.velocity = new Vector2(move, verticalSpeed);
-
             verticalVelocityTimeLeft -= Time.deltaTime;
 
             if (verticalVelocityTimeLeft <= 0)
@@ -75,6 +79,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void Flip(bool facingRight)
+    {
+        if (facingRight != isFacingRight)
+        {
+            isFacingRight = facingRight;
+            Vector3 scale = transform.localScale;
+            scale.x *= -1;
+            transform.localScale = scale;
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Diamond"))
@@ -89,8 +104,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("MovingPlatform"))
         {
-            // Set the player as a child of the moving platform
-            transform.SetParent(collision.transform);
+            transform.SetParent(collision.transform); // Attach to moving platform
         }
     }
 
@@ -98,14 +112,13 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("MovingPlatform"))
         {
-            // Detach the player from the moving platform
-            transform.SetParent(null);
+            transform.SetParent(null); // Detach from moving platform
         }
     }
 
     public void Player1Death()
     {
         Debug.Log("Destroy player1");
-        Destroy(this.gameObject, 0.5f);
+        SceneManager.LoadScene(3);
     }
 }

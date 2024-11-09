@@ -33,7 +33,7 @@ public class Player1hu : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        steamActive = GetComponent<CoOpMechanicUnlock>().isMechanicActive;
+        //steamActive = GetComponent<CoOpMechanicUnlock>().isMechanicActive;
         //wallHopDirection.Normalize();
         //wallJumpDirection.Normalize();
     }
@@ -45,14 +45,14 @@ public class Player1hu : MonoBehaviour
         CheckWallSliding();
         CheckCoyoteTime();
 
-        if( GetComponent<CoOpMechanicUnlock>().isMechanicActive)
-        {
+        //if( GetComponent<CoOpMechanicUnlock>().isMechanicActive)
+        //{
            
-            if (Input.GetKey(KeyCode.W))
-            {
-                rb.velocity = new Vector2(rb.velocity.x, verticalSpeed);
-            }
-        }
+        //    if (Input.GetKey(KeyCode.W))
+        //    {
+        //        rb.velocity = new Vector2(rb.velocity.x, verticalSpeed);
+        //    }
+        //}
 
 
     }
