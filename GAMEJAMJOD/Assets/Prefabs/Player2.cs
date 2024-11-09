@@ -12,6 +12,9 @@ public class Player2 : MonoBehaviour
     private float verticalVelocityTimeLeft;
     private float cooldownTimeLeft;
 
+   public ParticleSystem dust;
+
+    public bool hasCollectedDiamond = false;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -31,10 +34,12 @@ public class Player2 : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             move = -horizontalSpeed;
+            //dust.Play();
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
             move = horizontalSpeed;
+            //dust.Play();
         }
 
         // Only add vertical velocity if both Space and LeftShift are held and cooldown is not active
@@ -70,6 +75,17 @@ public class Player2 : MonoBehaviour
                 canUseVerticalVelocity = true;
                 verticalVelocityTimeLeft = verticalVelocityDuration;
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Diamond"))
+        {
+            hasCollectedDiamond = true;
+            Destroy(other.gameObject);
+            // Notify LevelManager that Player 2 has collected their diamond
+            LevelManager.Instance.OnPlayerCollectedDiamond(2);
         }
     }
 }

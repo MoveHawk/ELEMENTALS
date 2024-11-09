@@ -11,7 +11,8 @@ public class PlayerController : MonoBehaviour
     private bool canUseVerticalVelocity = true;
     private float verticalVelocityTimeLeft;
     private float cooldownTimeLeft;
-    
+
+    public bool hasCollectedDiamond = false;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -70,6 +71,16 @@ public class PlayerController : MonoBehaviour
                 canUseVerticalVelocity = true;
                 verticalVelocityTimeLeft = verticalVelocityDuration;
             }
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Diamond"))
+        {
+            hasCollectedDiamond = true;
+            Destroy(other.gameObject);
+            // Notify LevelManager that Player 1 has collected their diamond
+            LevelManager.Instance.OnPlayerCollectedDiamond(1);
         }
     }
 }
