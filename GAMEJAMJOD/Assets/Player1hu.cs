@@ -156,4 +156,11 @@ public class Player1hu : MonoBehaviour
             coyoteTimeCounter -= Time.deltaTime; // Count down when not grounded
         }
     }
+
+    public void Player1Death()
+    {
+        //destroy gameObject
+        Debug.Log("Destroy player1");
+        Destroy(this.gameObject,2.0f);
+    }
 }

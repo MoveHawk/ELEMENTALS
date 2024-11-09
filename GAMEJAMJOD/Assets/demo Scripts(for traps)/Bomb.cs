@@ -10,6 +10,7 @@ public class Bomb : MonoBehaviour
     public int explosionDamage = 50; // Damage caused by the explosion
     public float explosionDelay = 0.5f; // Time delay before the bomb explodes
     public float playerTriggerDistance = 2.0f;
+    public float playerKnockbackSpeed = 15f;
 
     [Header("References")]
     public GameObject explosionEffect; // Particle effect prefab for the explosion
@@ -62,6 +63,8 @@ public class Bomb : MonoBehaviour
 
                 if (nearbyObject.transform == Player1)
                 {
+                    
+                    //Call Player Death
                     Destroy(Player1.gameObject,1.0f);
                 }
 

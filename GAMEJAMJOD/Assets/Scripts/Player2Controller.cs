@@ -152,4 +152,11 @@ public class Player2Controller : MonoBehaviour
             coyoteTimeCounter -= Time.deltaTime;
         }
     }
+
+    public void Player2Death()
+    {
+        //destroy gameObject
+        Debug.Log("Destroy player2");
+        Destroy(this.gameObject, 2.0f);
+    }
 }
