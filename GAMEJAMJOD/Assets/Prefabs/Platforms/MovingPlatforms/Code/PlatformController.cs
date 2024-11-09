@@ -136,6 +136,24 @@ namespace Bundos.MovingPlatforms
             }
         }
 
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.gameObject.CompareTag("Player1") || collision.gameObject.CompareTag("Player2"))
+            {
+                collision.transform.parent = transform;
+                Rigidbody2D playerRb = collision.gameObject.GetComponent<Rigidbody2D>();
+                playerRb.velocity += rb.velocity; // Adjust player's velocity to match the platform's velocity
+            }
+        }
+
+        private void OnCollisionExit2D(Collision2D collision)
+        {
+            if (collision.gameObject.CompareTag("Player1") || collision.gameObject.CompareTag("Player2"))
+            {
+                collision.gameObject.transform.parent = null;
+            }
+        }
+
         private bool IsSelected()
         {
             return UnityEditor.Selection.activeGameObject == transform.gameObject;

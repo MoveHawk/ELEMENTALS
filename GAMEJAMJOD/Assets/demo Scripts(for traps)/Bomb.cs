@@ -17,25 +17,25 @@ public class Bomb : MonoBehaviour
 
     private bool hasExploded = false; // Check if the bomb has already exploded
     public Transform Player1;
-    //public Transform Player2;
+    public Transform Player2;
 
-    public Player1hu pl1;
-    public Player2Controller pc2;
+    public PlayerController pl1;
+    public Player2 pc2;
 
     private void Update()
     {
      
         float distancetoPlayer1 = Vector2.Distance(Player1.transform.position, transform.position);
-       // float distancetoPlayer2 = Vector2.Distance(Player2.transform.position, transform.position);
+        float distancetoPlayer2 = Vector2.Distance(Player2.transform.position, transform.position);
         if (distancetoPlayer1 < playerTriggerDistance)
         {
             Invoke("Explode", explosionDelay);
         }
 
-        //else if(distanceToPlayer2 < playerTriggerDistance) 
-        //{
-        //    Invoke("Explode", explosionDelay);
-        //}
+        else if (distancetoPlayer2 < playerTriggerDistance)
+        {
+            Invoke("Explode", explosionDelay);
+        }
     }
 
     private void Explode()
@@ -72,11 +72,11 @@ public class Bomb : MonoBehaviour
                     
                 }
 
-                //else if (nearbyObject.transform == Player2)
-                //{
-                
-                      //pc2.Player2Death();
-                //}
+                else if (nearbyObject.transform == Player2)
+                {
+
+                    pc2.Player2Death();
+                }
             }
         }
 
