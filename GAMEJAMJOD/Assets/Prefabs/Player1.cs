@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // Only add vertical velocity if both Space and LeftShift are held and cooldown is not active
-        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.RightShift) && canUseVerticalVelocity)
+        if (Input.GetKey(KeyCode.Space) && Input.GetKey(KeyCode.RightControl) && canUseVerticalVelocity)
         {
             // Start upward velocity when conditions are met
             rb.velocity = new Vector2(move, verticalSpeed);
