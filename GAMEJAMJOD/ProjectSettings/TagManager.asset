@@ -54,3 +54,6 @@ TagManager:
   - name: Player
     uniqueID: 842543325
     locked: 0
+  - name: HANDS
+    uniqueID: 1928991923
+    locked: 0
