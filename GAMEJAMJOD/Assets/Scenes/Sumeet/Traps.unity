@@ -274,7 +274,7 @@ GameObject:
   - component: {fileID: 560095565}
   m_Layer: 3
   m_Name: player
-  m_TagString: Player
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1899,6 +1899,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 690969102161843882, guid: 8e116fa2236d4654aaa94c2c282b9c0d, type: 3}
+      propertyPath: pc2
+      value: 
+      objectReference: {fileID: 8226197899321546927, guid: 49f978774d46a054d8be18cf506deae5, type: 3}
+    - target: {fileID: 690969102161843882, guid: 8e116fa2236d4654aaa94c2c282b9c0d, type: 3}
+      propertyPath: pl1
+      value: 
+      objectReference: {fileID: 4790844803748406380, guid: a168531f214cb724f98c8e1d6c3539af, type: 3}
     - target: {fileID: 690969102161843882, guid: 8e116fa2236d4654aaa94c2c282b9c0d, type: 3}
       propertyPath: Player1
       value: 

@@ -24,6 +24,7 @@ public class Player2Controller : MonoBehaviour
     private bool isWallSliding;
 
     private CoOpMechanicUnlock coOpMechanicUnlock;
+    public GameController gc;
 
     private void Awake()
     {
@@ -156,7 +157,11 @@ public class Player2Controller : MonoBehaviour
     public void Player2Death()
     {
         //destroy gameObject
-        Debug.Log("Destroy player2");
+       // Debug.Log("Destroy player2");
         Destroy(this.gameObject, 2.0f);
+        //Respawn to checkpoint
+        gc.Player2Respawnneed();
+        //Debug.Log("Respawn need ");
+        //Debug.Log("Check kr gamecontroller attach hai kya?");
     }
 }
