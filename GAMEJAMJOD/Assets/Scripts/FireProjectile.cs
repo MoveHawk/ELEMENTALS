@@ -15,12 +15,12 @@ public class FireProjectile : MonoBehaviour
     private bool isFacingRight = true;
 
     //Player2controller reference
-    public Player1hu pc1;
+   // public Player1hu pc1;
 
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && pc1.isGrounded == true)
+       /* if (Input.GetKeyDown(KeyCode.LeftShift) && pc1.isGrounded == true)
         {
             Shoot(false);
         }
@@ -38,7 +38,7 @@ public class FireProjectile : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.D)) // Right key
         {
             Flip(true);
-        }
+        }*/
     }
 
     private void Shoot(bool shootupward)
